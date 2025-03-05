@@ -101,13 +101,12 @@ export default function HomePage({ user, profile }: HomePageProps) {
   // -----------------------------------------------------------------------------------
   const { data: posts, fetchNextPage } = useInfiniteQuery({
     queryKey: ["posts", activeTab],
-    queryFn: ({ pageParam = "0" }) =>
-      fetchDataFn(supabase, user, parseInt(pageParam)),
-    getNextPageParam: (lastPage) =>
-      lastPage.length > 0
-        ? lastPage[lastPage.length - 1].id.toString()
-        : undefined,
-    initialPageParam: "0",
+    queryFn: ({ pageParam = 0 }) => fetchDataFn(supabase, user, pageParam),
+    getNextPageParam: (_lastPage, allPages) => {
+      const nextOffset = allPages.length * 25;
+      return nextOffset;
+    },
+    initialPageParam: 0,
   });
   // -----------------------------------------------------------------------------------
 

@@ -6,12 +6,10 @@
  * @see https://comp426-25s.github.io/
  */
 
-import { createSupabaseComponentClient } from "@/utils/supabase/clients/component";
 import { useEffect } from "react";
 
 export default function Testing() {
   // Configuration
-  const supabase = createSupabaseComponentClient();
 
   // PLACE FUNCTIONS YOU WANT TO TEST HERE.
   // Make sure that their results are returned.
