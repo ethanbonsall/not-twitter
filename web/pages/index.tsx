@@ -35,7 +35,7 @@ import {
 } from "@/utils/supabase/queries/post";
 import { getProfileData } from "@/utils/supabase/queries/profile";
 import { User } from "@supabase/supabase-js";
-import { InfiniteData, useQueryClient } from "@tanstack/react-query";
+import { useInfiniteQuery, useQueryClient } from "@tanstack/react-query";
 import {
   ChevronsDown,
   ChevronsLeft,
@@ -99,14 +99,16 @@ export default function HomePage({ user, profile }: HomePageProps) {
   //       final result of your `useInfiniteQuery` implementation should be:
   //       const { data: posts, fetchNextPage } = useInfiniteQuery({...})
   // -----------------------------------------------------------------------------------
-  type Fake = {
-    data: InfiniteData<z.infer<typeof PostAuthor>[]> | undefined;
-    fetchNextPage: () => Promise<void>;
-  };
-  const { data: posts, fetchNextPage }: Fake = {
-    data: undefined,
-    fetchNextPage: async () => {},
-  };
+  const { data: posts, fetchNextPage } = useInfiniteQuery({
+    queryKey: ["posts", activeTab],
+    queryFn: ({ pageParam = "0" }) =>
+      fetchDataFn(supabase, user, parseInt(pageParam)),
+    getNextPageParam: (lastPage) =>
+      lastPage.length > 0
+        ? lastPage[lastPage.length - 1].id.toString()
+        : undefined,
+    initialPageParam: "0",
+  });
   // -----------------------------------------------------------------------------------
 
   // Function to hard refresh all React Query queries to get the latest data.
@@ -128,7 +130,7 @@ export default function HomePage({ user, profile }: HomePageProps) {
 
   return (
     <div className="flex flex-row justify-center w-full h-full">
-      <div className="w-[600px] h-screen">
+      <div className="w-[600px] h-full">
         {/* Write a Post Card */}
         <Card>
           <CardHeader className="pb-3 pt-3">
@@ -261,7 +263,7 @@ export default function HomePage({ user, profile }: HomePageProps) {
         </Tabs>
 
         {/* Scroll area containing the feed. */}
-        <ScrollArea className="mt-4 h-[70vh] w-full rounded-xl border bg-card text-card-foreground shadow">
+        <ScrollArea className="mt-4 h-[53vh] w-full rounded-xl border bg-card text-card-foreground shadow">
           <PostFeed user={user} posts={posts} fetchNext={fetchNextPage} />
         </ScrollArea>
       </div>

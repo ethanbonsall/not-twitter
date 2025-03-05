@@ -42,7 +42,21 @@ export default function LoginPage() {
   // query with the key `user_profile` that is found in the `header` component.
 
   const logIn = async () => {
-    // ... your implementation here ...
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      alert("Login failed: " + error.message);
+      return;
+    }
+
+    // Refresh user profile in React Query
+    queryClient.resetQueries({ queryKey: ["user_profile"] });
+
+    // Redirect to home page
+    router.push("/");
   };
 
   return (

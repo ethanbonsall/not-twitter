@@ -54,7 +54,22 @@ export default function SignUpPage() {
   // query with the key `user_profile` that is found in the `header` component.
 
   const signUp = async () => {
-    // ... your implementation here ...
+    const { error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { name, handle },
+      },
+    });
+
+    if (error) {
+      alert("Sign-up failed: " + error.message);
+      return;
+    }
+
+    queryClient.resetQueries({ queryKey: ["user_profile"] });
+
+    router.push("/");
   };
 
   return (
