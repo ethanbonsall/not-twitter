@@ -109,7 +109,7 @@ export default function HomePage({ user, profile }: HomePageProps) {
     initialPageParam: 0,
   });
   // -----------------------------------------------------------------------------------
-
+  // final
   // Function to hard refresh all React Query queries to get the latest data.
   // NOTE: This is not best practice. Later, we will use a tool talled `tRPC`
   // whose APIs make this a bit easier to do and also to follow.
