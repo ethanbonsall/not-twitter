@@ -1,14 +1,3 @@
-/**
- * This page shows profiles to the user based on its ID. If the profile page
- * is the user's own page, they can change their profile picture.
- *
- * This page is protected to only show to logged in users. If the user is not
- * logged in, they are redirected to the login page.
- *
- * @author Ajay Gandecha <agandecha@unc.edu>
- * @license MIT
- * @see https://comp426-25s.github.io/
- */
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";

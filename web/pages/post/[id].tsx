@@ -1,13 +1,4 @@
-/**
- * This page shows individual posts to the user based on its ID.
- *
- * This page is protected to only show to logged in users. If the user is not
- * logged in, they are redirected to the login page.
- *
- * @author Ajay Gandecha <agandecha@unc.edu>
- * @license MIT
- * @see https://comp426-25s.github.io/
- */
+
 
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";

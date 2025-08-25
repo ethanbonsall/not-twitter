@@ -1,10 +1,4 @@
-/**
- * This is the signup page of the application, allowing users to register.
- *
- * @author Ajay Gandecha <agandecha@unc.edu>
- * @license MIT
- * @see https://comp426-25s.github.io/
- */
+
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -27,31 +21,7 @@ export default function SignUpPage() {
   const [handle, setHandle] = useState("");
   const [password, setPassword] = useState("");
 
-  // TODO: Handle the sign up request, alerting the user if there is
-  // an error. If the signup is successful, the user must be
-  // redirected to the home page. When signing up your user, you
-  // should also include the `name` and `handle` fields in as extra
-  // data that is processed when signing up. This allows Supabase
-  // to create a row in the `profile` table with this data using the
-  // *function* and *trigger* setup we had earlier. To do this, in the
-  // object passed to the `signUp` method, you can add an `options` field
-  // that contains `data` like so:
-  //
-  // ```ts
-  // options: { data: { name, handle } }
-  // ```
-  //
-  // Also, the `user_profile` query in React Query should hard refreshed
-  // so that the header can correctly display newly logged-in user. Since
-  // this is a bit hard to figure out, I will give you the line of code
-  // that does this:
-  //
-  // ```ts
-  // queryClient.resetQueries({ queryKey: ["user_profile"] });
-  // ```
-  //
-  // This code calls on the global React Query client to reset the specific
-  // query with the key `user_profile` that is found in the `header` component.
+  
 
   const signUp = async () => {
     const { error } = await supabase.auth.signUp({

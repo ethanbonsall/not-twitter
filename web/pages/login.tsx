@@ -1,10 +1,4 @@
-/**
- * This is the login page of the application, allowing users to log in.
- *
- * @author Ajay Gandecha <agandecha@unc.edu>
- * @license MIT
- * @see https://comp426-25s.github.io/
- */
+
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,22 +19,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // TODO: Handle the sign in request, alerting the user if there is
-  // an error. If the login is successful, the user must be
-  // redirected to the home page.
-  //
-  // Also, the `user_profile` query in React Query should hard refreshed
-  // so that the header can correctly display newly logged-in user. Since
-  // this is a bit hard to figure out, I will give you the line of code
-  // that does this:
-  //
-  // ```ts
-  // queryClient.resetQueries({ queryKey: ["user_profile"] });
-  // ```
-  //
-  // This code calls on the global React Query client to reset the specific
-  // query with the key `user_profile` that is found in the `header` component.
-
+ 
   const logIn = async () => {
     const { error } = await supabase.auth.signInWithPassword({
       email,

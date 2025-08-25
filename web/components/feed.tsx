@@ -1,10 +1,4 @@
-/**
- * Component to display an infinitely scrolling feed of posts.
- *
- * @author Ajay Gandecha <agandecha@unc.edu>
- * @license MIT
- * @see https://comp426-25s.github.io/
- */
+
 
 import { Fragment } from "react";
 import { InView } from "react-intersection-observer";

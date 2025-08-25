@@ -1,11 +1,4 @@
-/**
- * The _app component is the top-level component wrapping all pages
- * in the application.
- *
- * @author Ajay Gandecha <agandecha@unc.edu>
- * @license MIT
- * @see https://comp426-25s.github.io/
- */
+
 
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import Header from "@/components/header";

@@ -1,14 +1,4 @@
-/**
- * This is the home page of the application, showing the feed of posts and
- * the ability to create new posts.
- *
- * This page is protected to only show to logged in users. If the user is not
- * logged in, they are redirected to the login page.
- *
- * @author Ajay Gandecha <agandecha@unc.edu>
- * @license MIT
- * @see https://comp426-25s.github.io/
- */
+
 
 import PostFeed from "@/components/feed";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -86,19 +76,7 @@ export default function HomePage({ user, profile }: HomePageProps) {
       : getLikesFeed;
 
   // Infinite query to fetch the posts from the server.
-  // TODO:
-  // Use the `useInfiniteQuery` hook to fetch the posts from the server.
-  // - Make sure that the query key array includes the active tab so that
-  //   the query is refetched when the tab changes.
-  // - Ensure that you use the `getNextPageParam` function to determine
-  //   the next page to fetch.
-  //   See: https://tanstack.com/query/latest/docs/framework/react/guides/infinite-queries
-
-  // NOTE: Replace the code below with your implementation - this dummy code is just to
-  //       show the structure of the data and prevent type errors down the road. The
-  //       final result of your `useInfiniteQuery` implementation should be:
-  //       const { data: posts, fetchNextPage } = useInfiniteQuery({...})
-  // -----------------------------------------------------------------------------------
+  
   const { data: posts, fetchNextPage } = useInfiniteQuery({
     queryKey: ["posts", activeTab],
     queryFn: ({ pageParam = 0 }) => fetchDataFn(supabase, user, pageParam),

@@ -1,10 +1,4 @@
-/**
- * This page is reserved for your development and testing purposes.
- *
- * @author Ajay Gandecha <agandecha@unc.edu>
- * @license MIT
- * @see https://comp426-25s.github.io/
- */
+
 
 import { useEffect } from "react";
 

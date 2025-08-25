@@ -1,10 +1,4 @@
-/**
- * Header component appearing at the top of all pages.
- *
- * @author Ajay Gandecha <agandecha@unc.edu>
- * @license MIT
- * @see https://comp426-25s.github.io/
- */
+
 
 import { Bird, LogOut, UserRound } from "lucide-react";
 import Link from "next/link";
